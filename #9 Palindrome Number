@@ -1,0 +1,17 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+        if(x<0||(x!=0&&x%10==0)){
+            return false;
+        }
+        
+        int rec = 0;
+       while(x>rec){
+            rec = rec*10 + x%10;
+            x = x/10;
+        }
+        if(rec == x || rec/10 == x){
+            return true;
+        }
+        return false;
+    }
+}
