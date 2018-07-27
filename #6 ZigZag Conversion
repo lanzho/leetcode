@@ -1,0 +1,46 @@
+class Solution {
+    public String convert(String s, int numRows) {
+        StringBuilder [] arr = new StringBuilder[numRows];
+        if(numRows ==1){
+            return s;
+        }
+        
+        for(int i = 0;i<numRows;i++){
+            arr[i] = new StringBuilder();
+        }
+        
+        boolean forward = true;
+        int row = 0;
+        for(int j = 0;j<s.length();j++){
+            if(forward == true){
+                arr[row].append(s.charAt(j));
+                if(row == numRows-1){
+                    forward = false;
+                    row = numRows-2;
+                }
+                else{   
+                    row++;
+                }
+                
+            }
+            else{
+                arr[row].append(s.charAt(j));
+                if(row == 0){
+                    forward = true;
+                    row = row+1;
+                }else{
+                    row--;
+                } 
+            }
+            
+        }
+        
+        
+        
+        StringBuilder result = new StringBuilder();
+        for(int k =0;k<numRows;k++){
+                result.append(arr[k]);
+        }
+        return result.toString();
+    }
+}
