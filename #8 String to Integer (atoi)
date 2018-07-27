@@ -1,0 +1,31 @@
+class Solution {
+    public int myAtoi(String str) {
+        int index = 0;
+        int sign = 1;
+        int rev = 0;
+        
+        while(index<str.length()&&str.charAt(index)==' '){
+            index++;
+        }
+        if(index>=str.length()){return 0;}
+        
+        
+        if(str.charAt(index)=='+' || str.charAt(index)=='-'){
+            if(str.charAt(index)=='-'){
+                sign = -1;
+            }
+            index++;
+        }
+        
+
+        while(index < str.length() && '0'<=str.charAt(index) && '9'>=str.charAt(index)){
+            if(rev>Integer.MAX_VALUE/10||(rev==Integer.MAX_VALUE/10&&str.charAt(index)-'0'>7)){
+                if(sign==1){return Integer.MAX_VALUE;}
+                else {return Integer.MIN_VALUE;}
+            }
+            rev = rev*10+str.charAt(index)-'0';
+            index++;
+        }
+        return sign*rev;
+    }
+}
