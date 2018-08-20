@@ -1,0 +1,41 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+        if(needle.isEmpty()) return 0;
+        
+        int length = haystack.length()-needle.length()+1;
+        if(length<0) return -1;
+        
+        for(int i=0;i<length;i++){
+            int count = 0;
+            while(count<needle.length() && haystack.charAt(i+count)==needle.charAt(count)){
+                count++;
+            }
+            if(count == needle.length()){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+
+/*
+class Solution {
+    public int strStr(String haystack, String needle) {
+        if (needle.isEmpty() || haystack.equals(needle))
+            return 0;
+            
+        
+        int startIndex = 0;
+        int endIndex = needle.length();
+        
+        while (endIndex <= haystack.length()) {
+            if (haystack.substring(startIndex, endIndex).equals(needle)) 
+                return startIndex;
+            startIndex++;
+            endIndex++;
+        }
+        
+        return -1;
+    }
+}
+*/
